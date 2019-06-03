@@ -1,5 +1,6 @@
 // Guess what letter I'm thinking of
-var guessedLetter = document.getElementById("userChoice");
+var userChoiceText = document.getElementById("userchoice-text");
+console.log(userChoiceText);
 var winsText = document.getElementById("wins-text");
 var lossesText = document.getElementById("losses-text");
 var guessesText = document.getElementById("guesses");
@@ -14,15 +15,26 @@ var computerChoice = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l"
 document.onkeyup = function (event) {
     var ranLett = computerChoice[Math.floor(Math.random() * computerChoice.length)];
     var userChoice = event.key;
-    for (i = 0; i < computerChoice.length; i++);
+    // for (i = 0; i < computerChoice.length; i++);
     if (userChoice === ranLett) {
         wins++;
-        return document.text
+    }    
+    else if (guesses === 10) {
+            losses++;
+            return document.write("Try Again")
+        }
+    
+        guesses++;
+        
 
+        console.log(userChoiceText);
+        userChoiceText.textContent = "You chose: " + userChoice;
+        computerChoiceText.textContent = "The computer chose: " + ranLett;
+        winsText.textContent = "wins: " + wins;
+        lossesText.textContent = "losses: " + losses;
+        guessesText.textContent = "guesses: " + guesses;
+        
     }
-    guesses++
-    return (console.log(ranLett, guesses, userChoice));
-}
 // 4. Wins: (# of times the user has guessed the letter correctly)
 
 // 5. Losses: (# of times the user has failed to guess the letter correctly after exhausting all guesses)
